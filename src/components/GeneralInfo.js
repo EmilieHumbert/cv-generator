@@ -12,7 +12,6 @@ const GeneralInfo = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(name);
     setEdit(false);
   };
 
