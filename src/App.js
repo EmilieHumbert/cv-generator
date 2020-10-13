@@ -1,15 +1,15 @@
 import React from "react";
 
-import GeneralInfo from "./components/GeneralInfo";
-import EducationInfo from "./components/EducationInfo";
-import WorkInfo from './components/WorkInfo'
+import General from "./components/general/General";
+import Education from "./components/education/Education";
+import Work from './components/work/Work'
 
 function App() {
   return (
     <div>
-      <GeneralInfo />
-      <EducationInfo />
-      <WorkInfo />
+      <General />
+      <Education />
+      <Work />
     </div>
   );
 }
