@@ -2,12 +2,14 @@ import React, { useState } from "react";
 
 const GeneralInfo = () => {
   const [edit, setEdit] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(Number);
+  const [generalInfo, setGeneralInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
 
-  const handleChange = (event, updateFunction) => {
-    updateFunction(event.target.value);
+  const handleChange = (event, updateFunction, field) => {
+    updateFunction({ ...generalInfo, [field]: event.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -26,29 +28,31 @@ const GeneralInfo = () => {
           <label>
             Full name:
             <input
-              onChange={(event) => handleChange(event, setName)}
+              onChange={(event) => handleChange(event, setGeneralInfo, "name")}
               required
               type="text"
-              value={name}
+              value={generalInfo.name}
             />
             Email:
             <input
-              onChange={(event) => handleChange(event, setEmail)}
+              onChange={(event) => handleChange(event, setGeneralInfo, "email")}
               type="email"
+              value={generalInfo.email}
             />
             Phone number:
             <input
-              onChange={(event) => handleChange(event, setPhone)}
-              type="number"
+              onChange={(event) => handleChange(event, setGeneralInfo, "phone")}
+              type="tel"
+              value={generalInfo.phone}
             />
           </label>
           <input type="submit" value="Submit" />
         </form>
       ) : (
         <div>
-          <h1>{name || "Full name"}</h1>
-          <p>{email || "Email"}</p>
-          <p>{phone || "Phone number"}</p>
+          <h1>{generalInfo.name}</h1>
+          <p>Email: {generalInfo.email}</p>
+          <p>Phone number: {generalInfo.phone}</p>
           <button onClick={handleEditClick}>EDIT</button>
         </div>
       )}
