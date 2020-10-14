@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import EducationForm from "./EducationForm";
 import EducationContent from "./EducationContent";
 
+const createDegree = () => ({
+  name: "",
+  title: "",
+  startDate: "",
+  endDate: "",
+});
+
 const Education = () => {
   const [edit, setEdit] = useState(false);
-  const [degrees, setDegrees] = useState([
-    {
-      name: "",
-      title: "",
-      startDate: "",
-      endDate: "",
-    },
-  ]);
+  const [degrees, setDegrees] = useState([createDegree()]);
 
   const handleChange = (index, field, value) => {
     const updatedDegree = { ...degrees[index], [field]: value };
@@ -38,15 +38,7 @@ const Education = () => {
   };
 
   const handleAddDegree = () => {
-    setDegrees([
-      ...degrees,
-      {
-        name: "",
-        title: "",
-        startDate: "",
-        endDate: "",
-      },
-    ]);
+    setDegrees([...degrees, createDegree()]);
   };
 
   const handleDeleteDegree = (index) => {
