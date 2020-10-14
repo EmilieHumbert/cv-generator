@@ -51,6 +51,13 @@ const Work = () => {
     ]);
   };
 
+  const deleteJob = (index) => {
+    const updateJobs = jobs.filter((job, jobIndex) => {
+      return index !== jobIndex;
+    });
+    setJobs(updateJobs);
+  };
+
   return (
     <div>
       {jobs.map((job, index) => {
@@ -62,7 +69,11 @@ const Work = () => {
           />
         ) : (
           <div>
-            <WorkContent job={job} handleEditClick={handleEditClick} />
+            <WorkContent
+              job={job}
+              handleEditClick={handleEditClick}
+              deleteJob={() => deleteJob(index)}
+            />
           </div>
         );
       })}

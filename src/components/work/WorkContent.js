@@ -1,6 +1,6 @@
 import React from "react";
 
-const WorkContent = ({ job, handleEditClick }) => {
+const WorkContent = ({ job, handleEditClick, deleteJob }) => {
   return (
     <div>
       <h1>{job.positionTitle}</h1>
@@ -11,6 +11,7 @@ const WorkContent = ({ job, handleEditClick }) => {
         {job.endDate}
       </p>
       <button onClick={handleEditClick}>Edit</button>
+      <button onClick={deleteJob}>Delete job</button>
     </div>
   );
 };
