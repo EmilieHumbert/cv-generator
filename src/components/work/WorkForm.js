@@ -57,7 +57,6 @@ const WorkForm = ({ index, job, toggleEdit, updateJob }) => {
         ></input>
         <input
           onChange={(event) => handleChange("endDate", event.target.value)}
-          required
           type="date"
           value={formContent.endDate}
         ></input>

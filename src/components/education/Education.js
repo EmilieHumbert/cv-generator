@@ -40,8 +40,8 @@ const Education = () => {
           key={degree.id}
           degree={degree}
           deleteDegree={deleteDegree}
-          updateDegree={updateDegree}
           index={index}
+          updateDegree={updateDegree}
         />
       ))}
       <button onClick={addDegree}>Add a degree</button>

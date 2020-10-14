@@ -1,6 +1,6 @@
 import React from "react";
 
-const WorkContent = ({ job, toggleEdit, deleteJob }) => {
+const WorkContent = ({ deleteJob, job, toggleEdit }) => {
   return (
     <div>
       <h1>{job.positionTitle}</h1>

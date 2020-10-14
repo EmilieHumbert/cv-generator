@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import EducationForm from "./EducationForm";
 import EducationContent from "./EducationContent";
 
-const EducationItem = ({ degree, deleteDegree, updateDegree, index }) => {
+const EducationItem = ({ degree, deleteDegree, index, updateDegree }) => {
   const [edit, setEdit] = useState(false);
 
   const toggleEdit = () => {
@@ -13,15 +13,15 @@ const EducationItem = ({ degree, deleteDegree, updateDegree, index }) => {
   return edit ? (
     <EducationForm
       degree={degree}
+      index={index}
       toggleEdit={toggleEdit}
       updateDegree={updateDegree}
-      index={index}
     />
   ) : (
     <EducationContent
       degree={degree}
-      toggleEdit={toggleEdit}
       deleteDegree={() => deleteDegree(index)}
+      toggleEdit={toggleEdit}
     />
   );
 };

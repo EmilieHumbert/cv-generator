@@ -11,6 +11,7 @@ const createJob = () => ({
   startDate: "",
   endDate: "",
 });
+
 const Work = () => {
   const [jobs, setJobs] = useState([createJob()]);
 
@@ -38,10 +39,10 @@ const Work = () => {
       {jobs.map((job, index) => (
         <WorkItem
           key={job.id}
-          job={job}
           deleteJob={deleteJob}
-          updateJob={updateJob}
           index={index}
+          job={job}
+          updateJob={updateJob}
         />
       ))}
       <button onClick={addJob}>Add Work experience</button>
