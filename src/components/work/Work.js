@@ -3,17 +3,16 @@ import React, { useState } from "react";
 import WorkForm from "./WorkForm";
 import WorkContent from "./WorkContent";
 
+const createJob = () => ({
+  companyName: "",
+  positionTitle: "",
+  description: "",
+  startDate: "",
+  endDate: "",
+});
 const Work = () => {
   const [edit, setEdit] = useState(false);
-  const [jobs, setJobs] = useState([
-    {
-      companyName: "",
-      positionTitle: "",
-      description: "",
-      startDate: "",
-      endDate: "",
-    },
-  ]);
+  const [jobs, setJobs] = useState([createJob()]);
 
   const handleChange = (index, field, value) => {
     const updatedJob = { ...jobs[index], [field]: value };
@@ -39,16 +38,7 @@ const Work = () => {
   };
 
   const addJob = () => {
-    setJobs([
-      ...jobs,
-      {
-        companyName: "",
-        positionTitle: "",
-        description: "",
-        startDate: "",
-        endDate: "",
-      },
-    ]);
+    setJobs([...jobs, createJob()]);
   };
 
   const deleteJob = (index) => {
@@ -66,15 +56,14 @@ const Work = () => {
             handleSubmit={handleSubmit}
             handleChange={handleChange}
             setJob={setJobs}
+            job={job}
           />
         ) : (
-          <div>
-            <WorkContent
-              job={job}
-              handleEditClick={handleEditClick}
-              deleteJob={() => deleteJob(index)}
-            />
-          </div>
+          <WorkContent
+            job={job}
+            handleEditClick={handleEditClick}
+            deleteJob={() => deleteJob(index)}
+          />
         );
       })}
       <button onClick={addJob}>Add Work experience</button>
