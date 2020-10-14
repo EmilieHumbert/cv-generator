@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import EducationForm from "./EducationForm";
-import EducationContent from "./EducationContent";
+import EducationItem from "./EducationItem";
 
 const createDegree = () => ({
   name: "",
@@ -11,30 +10,14 @@ const createDegree = () => ({
 });
 
 const Education = () => {
-  const [edit, setEdit] = useState(false);
   const [degrees, setDegrees] = useState([createDegree()]);
 
-  const handleChange = (index, field, value) => {
-    const updatedDegree = { ...degrees[index], [field]: value };
+  const handleUpdateDegree = (index, updatedDegree) => {
     setDegrees(
       degrees.map((degree, degreeIndex) => {
         return degreeIndex === index ? updatedDegree : degree;
       })
     );
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (degrees.endDate < degrees.startDate) {
-      alert("Please pick an end date after the start date");
-      setEdit(true);
-      return;
-    }
-    setEdit(false);
-  };
-
-  const handleEditClick = () => {
-    setEdit(true);
   };
 
   const handleAddDegree = () => {
@@ -50,22 +33,14 @@ const Education = () => {
 
   return (
     <div>
-      {degrees.map((degree, index) => {
-        return edit ? (
-          <EducationForm
-            degree={degree}
-            index={index}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        ) : (
-          <EducationContent
-            degree={degree}
-            handleEditClick={handleEditClick}
-            handleDeleteDegree={() => handleDeleteDegree(index)}
-          />
-        );
-      })}
+      {degrees.map((degree, index) => (
+        <EducationItem
+          degree={degree}
+          handleDeleteDegree={handleDeleteDegree}
+          handleUpdateDegree={handleUpdateDegree}
+          index={index}
+        />
+      ))}
       <button onClick={handleAddDegree}>Add a degree</button>
     </div>
   );

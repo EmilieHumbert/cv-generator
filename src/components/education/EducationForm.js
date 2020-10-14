@@ -1,47 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 
-const EducationForm = ({ degree, index, handleChange, handleSubmit }) => {
+const EducationForm = ({
+  degree,
+  handleEditClick,
+  handleUpdateDegree,
+  index,
+}) => {
+  const [formContent, setFormContent] = useState({ ...degree });
+
+  const handleChange = (field, value) => {
+    setFormContent({ ...formContent, [field]: value });
+  };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    handleEditClick();
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (formContent.endDate && formContent.startDate > formContent.endDate) {
+      return alert(
+        "Please enter an end date later than or equal to the start date"
+      );
+    }
+    handleUpdateDegree(index, formContent);
+    handleEditClick();
+  };
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onReset={handleReset} onSubmit={handleSubmit}>
         <label>
           Degree title:
           <input
-            onChange={(event) =>
-              handleChange(index, "title", event.target.value)
-            }
+            onChange={(event) => handleChange("title", event.target.value)}
             required
             type="text"
-            value={degree.title}
+            value={formContent.title}
           ></input>
           School name:
           <input
-            onChange={(event) =>
-              handleChange(index, "name", event.target.value)
-            }
+            onChange={(event) => handleChange("name", event.target.value)}
             required
             type="text"
-            value={degree.name}
+            value={formContent.name}
           ></input>
           Date:
           <input
-            onChange={(event) =>
-              handleChange(index, "startDate", event.target.value)
-            }
+            onChange={(event) => handleChange("startDate", event.target.value)}
             required
             type="date"
-            value={degree.startDate}
+            value={formContent.startDate}
           ></input>
           <input
-            onChange={(event) =>
-              handleChange(index, "endDate", event.target.value)
-            }
-            required
+            onChange={(event) => handleChange("endDate", event.target.value)}
             type="date"
-            value={degree.endDate}
+            value={formContent.endDate}
           ></input>
         </label>
         <input type="submit" value="submit"></input>
+        <input type="reset" value="cancel"></input>
       </form>
     </div>
   );
