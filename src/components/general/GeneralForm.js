@@ -1,30 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
-const GeneralForm = ({handleChange, handleSubmit, setGeneralInfo, generalInfo}) => {
+const GeneralForm = ({ setGeneralInfo, generalInfo, toggleEdit }) => {
+  const [formContent, setFormContent] = useState({ ...generalInfo });
+
+  const handleChange = (field, value) => {
+    setFormContent({ ...formContent, [field]: value });
+  };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    toggleEdit();
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setGeneralInfo(formContent);
+    toggleEdit();
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onReset={handleReset} onSubmit={handleSubmit}>
       <label>
         Full name:
         <input
-          onChange={(event) => handleChange(event, setGeneralInfo, "name")}
+          onChange={(event) => handleChange("name", event.target.value)}
           required
           type="text"
-          value={generalInfo.name}
+          value={formContent.name}
         />
         Email:
         <input
-          onChange={(event) => handleChange(event, setGeneralInfo, "email")}
+          onChange={(event) => handleChange("email", event.target.value)}
           type="email"
-          value={generalInfo.email}
+          value={formContent.email}
         />
         Phone number:
         <input
-          onChange={(event) => handleChange(event, setGeneralInfo, "phone")}
+          onChange={(event) => handleChange("phone", event.target.value)}
           type="tel"
-          value={generalInfo.phone}
+          value={formContent.phone}
         />
       </label>
       <input type="submit" value="Submit" />
+      <input type="reset" value="Cancel" />
     </form>
   );
 };

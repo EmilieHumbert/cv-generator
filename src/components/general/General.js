@@ -11,32 +11,22 @@ const General = () => {
     phone: "",
   });
 
-  const handleChange = (event, updateFunction, field) => {
-    updateFunction({ ...generalInfo, [field]: event.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setEdit(false);
-  };
-
-  const handleEditClick = () => {
-    setEdit(true);
+  const toggleEdit = () => {
+    setEdit(!edit);
   };
 
   return (
     <div>
       {edit ? (
         <GeneralForm
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
           setGeneralInfo={setGeneralInfo}
           generalInfo={generalInfo}
+          toggleEdit={toggleEdit}
         />
       ) : (
         <GeneralContent
           generalInfo={generalInfo}
-          handleEditClick={handleEditClick}
+          toggleEdit={toggleEdit}
         />
       )}
     </div>

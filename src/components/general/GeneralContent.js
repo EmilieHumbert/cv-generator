@@ -1,12 +1,12 @@
 import React from "react";
 
-const GeneralContent = ({generalInfo, handleEditClick}) => {
+const GeneralContent = ({generalInfo, toggleEdit}) => {
   return (
     <div>
       <h1>{generalInfo.name}</h1>
       <p>Email: {generalInfo.email}</p>
       <p>Phone number: {generalInfo.phone}</p>
-      <button onClick={handleEditClick}>EDIT</button>
+      <button onClick={toggleEdit}>EDIT</button>
     </div>
   );
 };
