@@ -5,21 +5,28 @@ import WorkContent from "./WorkContent";
 
 const Work = () => {
   const [edit, setEdit] = useState(false);
-  const [job, setJob] = useState({
-    companyName: "",
-    positionTitle: "",
-    description: "",
-    startDate: "",
-    endDate: "",
-  });
+  const [jobs, setJobs] = useState([
+    {
+      companyName: "",
+      positionTitle: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+    },
+  ]);
 
-  const handleChange = (event, updateFunction, field) => {
-    updateFunction({ ...job, [field]: event.target.value });
+  const handleChange = (index, field, value) => {
+    const updatedJob = { ...jobs[index], [field]: value };
+    setJobs(
+      jobs.map((job, jobIndex) => {
+        return jobIndex === index ? updatedJob : job;
+      })
+    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (job.endDate < job.startDate) {
+    if (jobs.endDate < jobs.startDate) {
       alert("Please pick an end date after the start date");
       setEdit(true);
       return;
@@ -31,17 +38,35 @@ const Work = () => {
     setEdit(true);
   };
 
+  const addJob = () => {
+    setJobs([
+      ...jobs,
+      {
+        companyName: "",
+        positionTitle: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+      },
+    ]);
+  };
+
   return (
     <div>
-      {edit ? (
-        <WorkForm
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          setJob={setJob}
-        />
-      ) : (
-        <WorkContent job={job} handleEditClick={handleEditClick} />
-      )}
+      {jobs.map((job, index) => {
+        return edit ? (
+          <WorkForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            setJob={setJobs}
+          />
+        ) : (
+          <div>
+            <WorkContent job={job} handleEditClick={handleEditClick} />
+          </div>
+        );
+      })}
+      <button onClick={addJob}>Add Work experience</button>
     </div>
   );
 };
