@@ -37,7 +37,7 @@ const Education = () => {
     setEdit(true);
   };
 
-  const handleAddEducation = () => {
+  const handleAddDegree = () => {
     setDegrees([
       ...degrees,
       {
@@ -47,6 +47,13 @@ const Education = () => {
         endDate: "",
       },
     ]);
+  };
+
+  const handleDeleteDegree = (index) => {
+    const updatedDegrees = degrees.filter((degree, degreeIndex) => {
+      return index !== degreeIndex;
+    });
+    setDegrees(updatedDegrees);
   };
 
   return (
@@ -60,17 +67,14 @@ const Education = () => {
             handleSubmit={handleSubmit}
           />
         ) : (
-          <div>
-            <EducationContent
-              degree={degree}
-              index={index}
-              handleEditClick={handleEditClick}
-            />
-            <button onClick={handleAddEducation}>Add a degree</button>
-          </div>
+          <EducationContent
+            degree={degree}
+            handleEditClick={handleEditClick}
+            handleDeleteDegree={() => handleDeleteDegree(index)}
+          />
         );
       })}
-      {}
+      <button onClick={handleAddDegree}>Add a degree</button>
     </div>
   );
 };
