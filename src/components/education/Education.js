@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 import EducationItem from "./EducationItem";
 
 const createDegree = () => ({
+  id: nanoid(),
   name: "",
   title: "",
   startDate: "",
@@ -35,6 +37,7 @@ const Education = () => {
     <div>
       {degrees.map((degree, index) => (
         <EducationItem
+          key={degree.id}
           degree={degree}
           handleDeleteDegree={handleDeleteDegree}
           handleUpdateDegree={handleUpdateDegree}
