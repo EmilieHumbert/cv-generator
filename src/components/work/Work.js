@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 import WorkItem from "./WorkItem";
 
 const createJob = () => ({
+  id: nanoid(),
   companyName: "",
   positionTitle: "",
   description: "",
@@ -35,6 +37,7 @@ const Work = () => {
     <div>
       {jobs.map((job, index) => (
         <WorkItem
+          key={job.id}
           job={job}
           deleteJob={deleteJob}
           updateJob={updateJob}
