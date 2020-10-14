@@ -14,7 +14,7 @@ const createDegree = () => ({
 const Education = () => {
   const [degrees, setDegrees] = useState([createDegree()]);
 
-  const handleUpdateDegree = (index, updatedDegree) => {
+  const updateDegree = (index, updatedDegree) => {
     setDegrees(
       degrees.map((degree, degreeIndex) => {
         return degreeIndex === index ? updatedDegree : degree;
@@ -22,11 +22,11 @@ const Education = () => {
     );
   };
 
-  const handleAddDegree = () => {
+  const addDegree = () => {
     setDegrees([...degrees, createDegree()]);
   };
 
-  const handleDeleteDegree = (index) => {
+  const deleteDegree = (index) => {
     const updatedDegrees = degrees.filter((degree, degreeIndex) => {
       return index !== degreeIndex;
     });
@@ -39,12 +39,12 @@ const Education = () => {
         <EducationItem
           key={degree.id}
           degree={degree}
-          handleDeleteDegree={handleDeleteDegree}
-          handleUpdateDegree={handleUpdateDegree}
+          deleteDegree={deleteDegree}
+          updateDegree={updateDegree}
           index={index}
         />
       ))}
-      <button onClick={handleAddDegree}>Add a degree</button>
+      <button onClick={addDegree}>Add a degree</button>
     </div>
   );
 };

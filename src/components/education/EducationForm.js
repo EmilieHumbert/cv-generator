@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-const EducationForm = ({
-  degree,
-  handleEditClick,
-  handleUpdateDegree,
-  index,
-}) => {
+const EducationForm = ({ degree, toggleEdit, updateDegree, index }) => {
   const [formContent, setFormContent] = useState({ ...degree });
 
   const handleChange = (field, value) => {
@@ -14,7 +9,7 @@ const EducationForm = ({
 
   const handleReset = (event) => {
     event.preventDefault();
-    handleEditClick();
+    toggleEdit();
   };
 
   const handleSubmit = (event) => {
@@ -24,8 +19,8 @@ const EducationForm = ({
         "Please enter an end date later than or equal to the start date"
       );
     }
-    handleUpdateDegree(index, formContent);
-    handleEditClick();
+    updateDegree(index, formContent);
+    toggleEdit();
   };
 
   return (

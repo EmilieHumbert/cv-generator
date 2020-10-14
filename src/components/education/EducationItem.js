@@ -3,25 +3,25 @@ import React, { useState } from "react";
 import EducationForm from "./EducationForm";
 import EducationContent from "./EducationContent";
 
-const EducationItem = ({ degree, handleDeleteDegree, handleUpdateDegree, index }) => {
+const EducationItem = ({ degree, deleteDegree, updateDegree, index }) => {
   const [edit, setEdit] = useState(false);
 
-  const handleEditClick = () => {
+  const toggleEdit = () => {
     setEdit(!edit);
   };
 
   return edit ? (
     <EducationForm
       degree={degree}
-      handleEditClick={handleEditClick}
-      handleUpdateDegree={handleUpdateDegree}
+      toggleEdit={toggleEdit}
+      updateDegree={updateDegree}
       index={index}
     />
   ) : (
     <EducationContent
       degree={degree}
-      handleEditClick={handleEditClick}
-      handleDeleteDegree={() => handleDeleteDegree(index)}
+      toggleEdit={toggleEdit}
+      deleteDegree={() => deleteDegree(index)}
     />
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const EducationContent = ({ degree, handleEditClick, handleDeleteDegree }) => {
+const EducationContent = ({ degree, toggleEdit, deleteDegree }) => {
   return (
     <div>
       <h1>{degree.title}</h1>
@@ -9,8 +9,8 @@ const EducationContent = ({ degree, handleEditClick, handleDeleteDegree }) => {
         Date: {degree.startDate.length > 1 ? degree.startDate + " to" : ""}
         {degree.endDate}
       </p>
-      <button onClick={handleEditClick}>Edit</button>
-      <button onClick={handleDeleteDegree}>Delete</button>
+      <button onClick={toggleEdit}>Edit</button>
+      <button onClick={deleteDegree}>Delete</button>
     </div>
   );
 };
