@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import WorkForm from "./WorkForm";
-import WorkContent from "./WorkContent";
+import WorkItem from "./WorkItem";
 
 const createJob = () => ({
   companyName: "",
@@ -11,30 +10,14 @@ const createJob = () => ({
   endDate: "",
 });
 const Work = () => {
-  const [edit, setEdit] = useState(false);
   const [jobs, setJobs] = useState([createJob()]);
 
-  const handleChange = (index, field, value) => {
-    const updatedJob = { ...jobs[index], [field]: value };
+  const updateJob = (index, updatedJob) => {
     setJobs(
       jobs.map((job, jobIndex) => {
         return jobIndex === index ? updatedJob : job;
       })
     );
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (jobs.endDate < jobs.startDate) {
-      alert("Please pick an end date after the start date");
-      setEdit(true);
-      return;
-    }
-    setEdit(false);
-  };
-
-  const handleEditClick = () => {
-    setEdit(true);
   };
 
   const addJob = () => {
@@ -50,22 +33,14 @@ const Work = () => {
 
   return (
     <div>
-      {jobs.map((job, index) => {
-        return edit ? (
-          <WorkForm
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            setJob={setJobs}
-            job={job}
-          />
-        ) : (
-          <WorkContent
-            job={job}
-            handleEditClick={handleEditClick}
-            deleteJob={() => deleteJob(index)}
-          />
-        );
-      })}
+      {jobs.map((job, index) => (
+        <WorkItem
+          job={job}
+          deleteJob={deleteJob}
+          updateJob={updateJob}
+          index={index}
+        />
+      ))}
       <button onClick={addJob}>Add Work experience</button>
     </div>
   );

@@ -1,54 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 
-const WorkForm = ({ job, index, handleChange, handleSubmit }) => {
+const WorkForm = ({ index, job, toggleEdit, updateJob }) => {
+  const [formContent, setFormContent] = useState({ ...job });
+
+  const handleChange = (field, value) => {
+    setFormContent({ ...formContent, [field]: value });
+  };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    toggleEdit();
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (formContent.endDate && formContent.startDate > formContent.endDate) {
+      return alert(
+        "Please enter an end date later than or equal to the start date"
+      );
+    }
+    updateJob(index, formContent);
+    toggleEdit();
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onReset={handleReset} onSubmit={handleSubmit}>
       <label>
         Position title:
         <input
           onChange={(event) =>
-            handleChange(index, "positionTitle", event.target.value)
+            handleChange("positionTitle", event.target.value)
           }
           required
           type="text"
-          value={job.positionTitle}
+          value={formContent.positionTitle}
         ></input>
         Company name:
         <input
-          onChange={(event) =>
-            handleChange(index, "companyName", event.target.value)
-          }
+          onChange={(event) => handleChange("companyName", event.target.value)}
           required
           type="text"
-          value={job.companyName}
+          value={formContent.companyName}
         ></input>
         Description:
         <input
-          onChange={(event) =>
-            handleChange(index, "description", event.target.value)
-          }
+          onChange={(event) => handleChange("description", event.target.value)}
           type="text"
-          value={job.description}
+          value={formContent.description}
         ></input>
         Date:
         <input
-          onChange={(event) =>
-            handleChange(index, "startDate", event.target.value)
-          }
+          onChange={(event) => handleChange("startDate", event.target.value)}
           required
           type="date"
-          value={job.startDate}
+          value={formContent.startDate}
         ></input>
         <input
-          onChange={(event) =>
-            handleChange(index, "endDate", event.target.value)
-          }
+          onChange={(event) => handleChange("endDate", event.target.value)}
           required
           type="date"
-          value={job.endDate}
+          value={formContent.endDate}
         ></input>
       </label>
       <input type="submit" value="submit"></input>
+      <input type="reset" value="cancel"></input>
     </form>
   );
 };

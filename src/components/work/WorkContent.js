@@ -1,6 +1,6 @@
 import React from "react";
 
-const WorkContent = ({ job, handleEditClick, deleteJob }) => {
+const WorkContent = ({ job, toggleEdit, deleteJob }) => {
   return (
     <div>
       <h1>{job.positionTitle}</h1>
@@ -10,7 +10,7 @@ const WorkContent = ({ job, handleEditClick, deleteJob }) => {
         Date: {job.startDate.length > 1 ? job.startDate + " to " : ""}
         {job.endDate}
       </p>
-      <button onClick={handleEditClick}>Edit</button>
+      <button onClick={toggleEdit}>Edit</button>
       <button onClick={deleteJob}>Delete job</button>
     </div>
   );
