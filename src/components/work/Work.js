@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
+import { Button } from "primereact/button";
+
 import WorkItem from "./WorkItem";
 
 const createJob = () => ({
@@ -45,7 +47,16 @@ const Work = () => {
           updateJob={updateJob}
         />
       ))}
-      <button onClick={addJob}>Add Work experience</button>
+      <div className="p-d-flex p-flex-column">
+        <div className="p-col-align-center">
+          <Button
+            className="p-button-rounded p-button-success p-button-outlined"
+            icon="pi pi-plus"
+            label="Add additional work experience"
+            onClick={addJob}
+          />
+        </div>
+      </div>
     </div>
   );
 };

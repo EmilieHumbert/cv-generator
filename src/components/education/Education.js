@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
+import { Button } from "primereact/button";
+
 import EducationItem from "./EducationItem";
 
 const createDegree = () => ({
@@ -44,7 +46,16 @@ const Education = () => {
           updateDegree={updateDegree}
         />
       ))}
-      <button onClick={addDegree}>Add a degree</button>
+      <div className="p-d-flex p-flex-column">
+        <div className="p-col-align-center">
+          <Button
+            className="p-button-rounded p-button-success p-button-outlined"
+            icon="pi pi-plus"
+            label="Add additional education experience"
+            onClick={addDegree}
+          />
+        </div>
+      </div>
     </div>
   );
 };
