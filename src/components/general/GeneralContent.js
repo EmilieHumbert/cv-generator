@@ -5,20 +5,25 @@ import { Button } from "primereact/button";
 const GeneralContent = ({ generalInfo, toggleEdit }) => {
   return (
     <div>
-      <div className="p-d-flex p-flex-column">
-        <h1 className="p-col-align-center">
-          {generalInfo.name}
+      <div className="p-d-flex p-jc-between p-ai-center">
+        <h1 style={{ margin: "0" }}>
+          {generalInfo.name || (
+            <span style={{ color: "lightgrey" }}>Add your profile details</span>
+          )}
         </h1>
-        <p className="p-col-align-center">{generalInfo.email}</p>
-        <p className="p-col-align-center">{generalInfo.phone}</p>
+        <div>
+          <Button
+            className="p-button-rounded p-button-outlined"
+            icon="pi pi-pencil"
+            onClick={toggleEdit}
+          />
+        </div>
       </div>
-      <div className="p-d-flex p-jc-center">
-        <Button
-          className="p-button-rounded p-button-outlined"
-          onClick={toggleEdit}
-          icon="pi pi-pencil"
-          label="Edit or add information about you"
-        />
+      <div className="p-d-flex p-flex-column">
+        <p className="p-col-align-left">{generalInfo.email}</p>
+        <p className="p-col-align-left" style={{ margin: "0" }}>
+          {generalInfo.phone}
+        </p>
       </div>
     </div>
   );

@@ -5,31 +5,36 @@ import { Button } from "primereact/button";
 const EducationContent = ({ degree, deleteDegree, toggleEdit }) => {
   return (
     <div>
-      <div className="p-d-flex p-flex-column">
-        <h1 className="p-col-align-center">
-          {degree.title}
+      <div className="p-d-flex p-jc-between p-ai-center">
+        <h1 style={{ margin: "0" }}>
+          {degree.title || (
+            <span style={{ color: "lightgrey" }}>
+              Add your education history
+            </span>
+          )}
         </h1>
-        <p className="p-col-align-center">
+        <div>
+          <Button
+            className="p-button-rounded p-button-outlined"
+            icon="pi pi-pencil"
+            onClick={toggleEdit}
+          />
+          <Button
+            className="p-button-rounded p-button-danger p-button-outlined"
+            icon="pi pi-trash"
+            onClick={deleteDegree}
+          />
+        </div>
+      </div>
+      <div className="p-d-flex p-flex-column">
+        <p className="p-col-align-left">
           {degree.name && `School name: ${degree.name}`}
         </p>
-        <p className="p-col-align-center">
+        <p className="p-col-align-left">
           {degree.startDate && `Date`}
           {degree.startDate.length > 1 ? degree.startDate + " to " : ""}
           {degree.endDate}
         </p>
-      </div>
-      <div className="p-d-flex p-jc-center">
-        <Button
-          className="p-button-rounded p-button-outlined"
-          icon="pi pi-pencil"
-          label="Edit or add education experience"
-          onClick={toggleEdit}
-        />
-        <Button
-          className="p-button-rounded p-button-danger p-button-outlined"
-          icon="pi pi-trash"
-          onClick={deleteDegree}
-        />
       </div>
     </div>
   );

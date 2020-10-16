@@ -9,9 +9,12 @@ import General from "./components/general/General";
 import Education from "./components/education/Education";
 import Work from "./components/work/Work";
 
+import "./css/global.css";
+
 function App() {
   return (
     <div>
+      <h1 className="p-text-center">CV Generator</h1>
       <General />
       <Education />
       <Work />
