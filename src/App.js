@@ -13,7 +13,7 @@ import "./css/global.css";
 
 function App() {
   return (
-    <div>
+    <div className="p-component">
       <h1 className="p-text-center">CV Generator</h1>
       <General />
       <Education />
