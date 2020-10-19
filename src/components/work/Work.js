@@ -38,15 +38,13 @@ const Work = () => {
 
   return (
     <div className="p-grid">
-      <div className="p-col-6 p-offset-3 p-d-flex p-jc-between">
-        <h1 className="p-d-inline p-mb-0">Work experience</h1>
-        <div className="p-d-inline p-as-center">
-          <Button
-            className="p-button-rounded p-button-success p-button-outlined"
-            icon="pi pi-plus"
-            onClick={addJob}
-          />
-        </div>
+      <div className="p-col-6 p-offset-3 p-px-5 p-d-flex p-jc-between p-ai-end">
+        <h1 className="p-mb-0">Work experience</h1>
+        <Button
+          className="p-button-rounded p-button-success p-button-outlined"
+          icon="pi pi-plus"
+          onClick={addJob}
+        />
       </div>
       <Card className="p-col-6 p-offset-3 p-shadow-5 p-py-0 p-px-3 p-mb-3">
         {jobs.map((job, index) => (

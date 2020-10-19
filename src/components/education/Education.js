@@ -38,15 +38,14 @@ const Education = () => {
 
   return (
     <div className="p-grid">
-      <div className="p-col-6 p-offset-3 p-d-flex p-jc-between">
-        <h1 className="p-d-inline p-mb-0">Education experience</h1>
-        <div className="p-d-inline p-as-center">
-          <Button
-            className="p-button-rounded p-button-success p-button-outlined"
-            icon="pi pi-plus"
-            onClick={addDegree}
-          />
-        </div>
+      <div className="p-col-6 p-offset-3 p-px-5 p-d-flex p-jc-between p-ai-end">
+        <h1 className="p-mb-0">Education experience</h1>
+        <Button
+          className="p-button-rounded p-button-success p-button-outlined"
+          icon="pi pi-plus"
+          onClick={addDegree}
+          style={{ flexShrink: 0 }}
+        />
       </div>
       <Card className="p-col-6 p-offset-3 p-shadow-5 p-mb-2 p-py-0 p-px-3">
         {degrees.map((degree, index) => (

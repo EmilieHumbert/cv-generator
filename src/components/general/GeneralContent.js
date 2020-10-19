@@ -8,7 +8,9 @@ const GeneralContent = ({ generalInfo, toggleEdit }) => {
       <div className="p-d-flex p-jc-between p-ai-center">
         <h1 className="p-m-0">
           {generalInfo.name || (
-            <span style={{ color: "lightgrey" }}>Add your profile details</span>
+            <span className="p-pl-0" style={{ color: "lightgrey" }}>
+              Add your profile details
+            </span>
           )}
         </h1>
         <div>
@@ -20,8 +22,8 @@ const GeneralContent = ({ generalInfo, toggleEdit }) => {
         </div>
       </div>
       <div className="p-d-flex p-flex-column">
-        <p>{generalInfo.email}</p>
-        <p className="p-m-0">{generalInfo.phone}</p>
+        <p className="p-my-0">{generalInfo.email}</p>
+        <p className="p-mb-0">{generalInfo.phone}</p>
       </div>
     </div>
   );

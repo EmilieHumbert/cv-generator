@@ -19,7 +19,9 @@ const General = () => {
 
   return (
     <div className="p-grid">
-      <h1 className="p-col-6 p-offset-3 p-mb-0">Profile</h1>
+      <div className="p-col-6 p-offset-3 p-d-flex p-jc-between">
+        <h1 className="p-mb-0 p-pl-4">Profile</h1>
+      </div>
       <Card className="p-col-6 p-offset-3 p-shadow-5 p-py-0 p-px-3 p-mb-2">
         {edit ? (
           <GeneralForm

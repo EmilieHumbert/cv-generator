@@ -5,13 +5,15 @@ import { Button } from "primereact/button";
 const WorkContent = ({ deleteJob, job, toggleEdit }) => {
   return (
     <>
-      <div className="p-d-flex p-jc-between p-ai-center">
+      <div className="p-d-flex p-jc-between p-ai-start">
         <h1 className="p-my-0">
           {job.positionTitle || (
-            <span style={{ color: "lightgrey" }}>Add your work experience</span>
+            <span className="p-pl-0" style={{ color: "lightgrey" }}>
+              Add your work experience
+            </span>
           )}
         </h1>
-        <div>
+        <div style={{ flexShrink: 0 }}>
           <Button
             className="p-button-rounded p-button-outlined"
             icon="pi pi-pencil"
