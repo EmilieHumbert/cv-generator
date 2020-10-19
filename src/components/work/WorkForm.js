@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
+import { InputTextarea } from "primereact/inputtextarea";
 
 const WorkForm = ({ index, job, toggleEdit, updateJob }) => {
   const [formContent, setFormContent] = useState({ ...job });
@@ -48,13 +49,7 @@ const WorkForm = ({ index, job, toggleEdit, updateJob }) => {
           type="text"
           value={formContent.companyName}
         />
-        <label htmlFor="description">Description:</label>
-        <InputText
-          id="description"
-          onChange={(event) => handleChange("description", event.target.value)}
-          type="text"
-          value={formContent.description}
-        />
+
         <label htmlFor="daterange">Date</label>
         <Calendar
           id="daterange"
@@ -63,7 +58,17 @@ const WorkForm = ({ index, job, toggleEdit, updateJob }) => {
           selectionMode="range"
           value={formContent.date}
         />
-        <div className="p-formgroup-inline p-align-center p-justify-center">
+        <label htmlFor="description">Description:</label>
+        <InputTextarea
+          id="description"
+          onChange={(event) => handleChange("description", event.target.value)}
+          type="text"
+          value={formContent.description}
+        />
+        <div
+          className="p-formgroup-inline p-align-center p-justify-center"
+          style={{ marginTop: "10px" }}
+        >
           <Button
             className="p-button-rounded p-button-success p-button-outlined"
             icon="pi pi-check"

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
+import { InputTextarea } from "primereact/inputtextarea";
 
 const EducationForm = ({ degree, index, toggleEdit, updateDegree }) => {
   const [formContent, setFormContent] = useState({ ...degree });
@@ -49,7 +50,21 @@ const EducationForm = ({ degree, index, toggleEdit, updateDegree }) => {
           selectionMode="range"
           value={formContent.date}
         />
-        <div className="p-formgroup-inline p-align-center p-justify-center">
+        <label htmlFor="description">Description:</label>
+        <InputTextarea
+          autoResize
+          cols={30}
+          id="description"
+          onChange={(event) => handleChange("description", event.target.value)}
+          required
+          rows={5}
+          type="text"
+          value={formContent.description}
+        />
+        <div
+          className="p-formgroup-inline p-align-center p-justify-center"
+          style={{ marginTop: "10px" }}
+        >
           <Button
             className="p-button-rounded p-button-success p-button-outlined"
             icon="pi pi-check"

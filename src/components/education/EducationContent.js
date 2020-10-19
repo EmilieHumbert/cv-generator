@@ -36,6 +36,7 @@ const EducationContent = ({ degree, deleteDegree, toggleEdit }) => {
               " - " +
               degree.date[1].toDateString()}
         </p>
+        <p>{degree.description}</p>
       </div>
     </div>
   );

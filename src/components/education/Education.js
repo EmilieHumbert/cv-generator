@@ -11,6 +11,7 @@ const createDegree = () => ({
   name: "",
   title: "",
   date: "",
+  description: "",
 });
 
 const Education = () => {
