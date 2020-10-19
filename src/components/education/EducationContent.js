@@ -4,9 +4,9 @@ import { Button } from "primereact/button";
 
 const EducationContent = ({ degree, deleteDegree, toggleEdit }) => {
   return (
-    <div>
+    <>
       <div className="p-d-flex p-jc-between p-ai-center">
-        <h1 style={{ margin: "0" }}>
+        <h1 className="p-my-0">
           {degree.title || (
             <span style={{ color: "lightgrey" }}>
               Add your education history
@@ -27,18 +27,16 @@ const EducationContent = ({ degree, deleteDegree, toggleEdit }) => {
         </div>
       </div>
       <div className="p-d-flex p-flex-column">
-        <p className="p-col-align-left">
-          {degree.name && `School name: ${degree.name}`}
-        </p>
-        <p className="p-col-align-left">
+        <p className="p-my-0 p-text-bold">{degree.name}</p>
+        <p className="p-my-0">
           {Array.isArray(degree.date) &&
             degree.date[0].toDateString() +
               " - " +
               degree.date[1].toDateString()}
         </p>
-        <p>{degree.description}</p>
+        <p className="p-mb-0">{degree.description}</p>
       </div>
-    </div>
+    </>
   );
 };
 

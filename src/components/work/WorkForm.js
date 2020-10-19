@@ -60,15 +60,15 @@ const WorkForm = ({ index, job, toggleEdit, updateJob }) => {
         />
         <label htmlFor="description">Description:</label>
         <InputTextarea
+          autoResize
+          cols={30}
           id="description"
           onChange={(event) => handleChange("description", event.target.value)}
+          rows={5}
           type="text"
           value={formContent.description}
         />
-        <div
-          className="p-formgroup-inline p-align-center p-justify-center"
-          style={{ marginTop: "10px" }}
-        >
+        <div className="p-formgroup-inline p-align-center p-justify-center p-mt-2">
           <Button
             className="p-button-rounded p-button-success p-button-outlined"
             icon="pi pi-check"

@@ -4,9 +4,9 @@ import { Button } from "primereact/button";
 
 const WorkContent = ({ deleteJob, job, toggleEdit }) => {
   return (
-    <div>
+    <>
       <div className="p-d-flex p-jc-between p-ai-center">
-        <h1 style={{ margin: "0" }}>
+        <h1 className="p-my-0">
           {job.positionTitle || (
             <span style={{ color: "lightgrey" }}>Add your work experience</span>
           )}
@@ -25,18 +25,14 @@ const WorkContent = ({ deleteJob, job, toggleEdit }) => {
         </div>
       </div>
       <div className="p-d-flex p-flex-column">
-        <p className="p-col-align-left">
-          {job.companyName && `Company name: ${job.companyName}`}
-        </p>
-        <p className="p-col-align-left">
-          {job.description && `Description: ${job.description}`}
-        </p>
-        <p className="p-col-align-left">
+        <p className="p-my-0 p-text-bold">{job.companyName}</p>
+        <p className="p-my-0">
           {Array.isArray(job.date) &&
             job.date[0].toDateString() + " - " + job.date[1].toDateString()}
         </p>
+        <p className="p-mb-0">{job.description}</p>
       </div>
-    </div>
+    </>
   );
 };
 

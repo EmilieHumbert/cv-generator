@@ -19,17 +19,12 @@ const General = () => {
 
   return (
     <div className="p-grid">
-      <h1 className="p-col-6 p-offset-3" style={{ marginBottom: "0" }}>
-        Profile
-      </h1>
-      <Card
-        style={{ padding: "0 1rem", marginBottom: "10px" }}
-        className="p-col-6 p-offset-3 p-shadow-5"
-      >
+      <h1 className="p-col-6 p-offset-3 p-mb-0">Profile</h1>
+      <Card className="p-col-6 p-offset-3 p-shadow-5 p-py-0 p-px-3 p-mb-2">
         {edit ? (
           <GeneralForm
-            setGeneralInfo={setGeneralInfo}
             generalInfo={generalInfo}
+            setGeneralInfo={setGeneralInfo}
             toggleEdit={toggleEdit}
           />
         ) : (

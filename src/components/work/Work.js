@@ -39,9 +39,7 @@ const Work = () => {
   return (
     <div className="p-grid">
       <div className="p-col-6 p-offset-3 p-d-flex p-jc-between">
-        <h1 className="p-d-inline" style={{ marginBottom: "0" }}>
-          Work experience
-        </h1>
+        <h1 className="p-d-inline p-mb-0">Work experience</h1>
         <div className="p-d-inline p-as-center">
           <Button
             className="p-button-rounded p-button-success p-button-outlined"
@@ -50,14 +48,12 @@ const Work = () => {
           />
         </div>
       </div>
-      <Card
-        className="p-col-6 p-offset-3 p-shadow-5"
-        style={{ padding: "0 1rem", marginBottom: "10px" }}
-      >
+      <Card className="p-col-6 p-offset-3 p-shadow-5 p-py-0 p-px-3 p-mb-3">
         {jobs.map((job, index) => (
           <WorkItem
             key={job.id}
             deleteJob={deleteJob}
+            hasBottomBorder={index !== jobs.length - 1}
             index={index}
             job={job}
             updateJob={updateJob}

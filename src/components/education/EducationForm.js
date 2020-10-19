@@ -62,8 +62,7 @@ const EducationForm = ({ degree, index, toggleEdit, updateDegree }) => {
           value={formContent.description}
         />
         <div
-          className="p-formgroup-inline p-align-center p-justify-center"
-          style={{ marginTop: "10px" }}
+          className="p-formgroup-inline p-align-center p-justify-center p-mt-2"
         >
           <Button
             className="p-button-rounded p-button-success p-button-outlined"

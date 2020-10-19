@@ -39,9 +39,7 @@ const Education = () => {
   return (
     <div className="p-grid">
       <div className="p-col-6 p-offset-3 p-d-flex p-jc-between">
-        <h1 className="p-d-inline" style={{ marginBottom: "0" }}>
-          Education experience
-        </h1>
+        <h1 className="p-d-inline p-mb-0">Education experience</h1>
         <div className="p-d-inline p-as-center">
           <Button
             className="p-button-rounded p-button-success p-button-outlined"
@@ -50,20 +48,17 @@ const Education = () => {
           />
         </div>
       </div>
-      <Card
-        className="p-col-6 p-offset-3 p-shadow-5"
-        style={{ padding: "0 1rem", marginBottom: "10px" }}
-      >
+      <Card className="p-col-6 p-offset-3 p-shadow-5 p-mb-2 p-py-0 p-px-3">
         {degrees.map((degree, index) => (
           <EducationItem
             key={degree.id}
             degree={degree}
             deleteDegree={deleteDegree}
+            hasBottomBorder={index !== degrees.length - 1}
             index={index}
             updateDegree={updateDegree}
           />
         ))}
-        <div className="p-d-flex p-flex-column"></div>
       </Card>
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 
-const GeneralForm = ({ setGeneralInfo, generalInfo, toggleEdit }) => {
+const GeneralForm = ({ generalInfo, setGeneralInfo, toggleEdit }) => {
   const [formContent, setFormContent] = useState({ ...generalInfo });
 
   const handleChange = (field, value) => {
@@ -46,7 +46,7 @@ const GeneralForm = ({ setGeneralInfo, generalInfo, toggleEdit }) => {
           value={formContent.phone}
         />
       </div>
-      <div className="p-formgroup-inline p-align-center p-justify-center">
+      <div className="p-formgroup-inline p-align-center p-justify-center p-mt-2">
         <Button
           className="p-button-rounded p-button-success p-button-outlined"
           icon="pi pi-check"
