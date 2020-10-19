@@ -31,9 +31,10 @@ const EducationContent = ({ degree, deleteDegree, toggleEdit }) => {
           {degree.name && `School name: ${degree.name}`}
         </p>
         <p className="p-col-align-left">
-          {degree.startDate && `Date`}
-          {degree.startDate.length > 1 ? degree.startDate + " to " : ""}
-          {degree.endDate}
+          {Array.isArray(degree.date) &&
+            degree.date[0].toDateString() +
+              " - " +
+              degree.date[1].toDateString()}
         </p>
       </div>
     </div>

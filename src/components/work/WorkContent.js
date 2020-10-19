@@ -32,9 +32,8 @@ const WorkContent = ({ deleteJob, job, toggleEdit }) => {
           {job.description && `Description: ${job.description}`}
         </p>
         <p className="p-col-align-left">
-          {job.startDate && `Date:`}{" "}
-          {job.startDate.length > 1 ? job.startDate + " to " : ""}
-          {job.endDate}
+          {Array.isArray(job.date) &&
+            job.date[0].toDateString() + " - " + job.date[1].toDateString()}
         </p>
       </div>
     </div>

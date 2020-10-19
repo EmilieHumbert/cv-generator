@@ -11,8 +11,7 @@ const createJob = () => ({
   companyName: "",
   positionTitle: "",
   description: "",
-  startDate: "",
-  endDate: "",
+  date: "",
 });
 
 const Work = () => {

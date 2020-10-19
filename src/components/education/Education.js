@@ -10,8 +10,7 @@ const createDegree = () => ({
   id: nanoid(),
   name: "",
   title: "",
-  startDate: "",
-  endDate: "",
+  date: "",
 });
 
 const Education = () => {
